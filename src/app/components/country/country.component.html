@@ -1,0 +1,102 @@
+
+<ng-container  *ngIf="!visible" >
+<div class="container" *ngIf="!visibleLoader">
+    <div class="cards">
+        <p class="is-size-4">¿Cómo está la ciudad que deseas?</p>
+        <div class="card-content">
+          <div class="content">
+            <main>
+                <section>
+                 <p class="is-size-4">Escribe la ciudad</p>
+                 <input class="input" type="text" placeholder="Ciudad" [(ngModel)]="city" />
+                </section>
+                <section>
+                 <p class="is-size-4">Escribe el país</p>
+                 <input class="input" type="text" placeholder="país" [(ngModel)]="country" />
+                </section>
+             </main>
+          </div>
+        </div>
+        <button class="button is-info is-dark"
+        (click)="alertCountry()"
+        >Consultar</button>
+      </div>
+</div>
+<div class="container" *ngIf="visibleLoader" >
+    <main>
+      <section>
+        <progress class="progress is-danger" max="100"></progress>
+      </section>
+      cargando...
+    </main>
+</div>
+</ng-container>
+
+<ng-container *ngIf="visible" >
+  <div class="container">
+    <main>
+  </main>
+
+  <div class="columns is-mobile is-centered">
+    <div class="column is-half animate__animated animate__rubberBand">
+      <section>
+        <header>
+          <h1 class="is-size-4">Condiciones Climáticas Actuales</h1>
+            <p>Temperatura: {{dataWeather?.current?.temp_c}}°C  <strong>({{dataWeather?.current?.temp_f}} °F) </strong>  </p>
+            <p>Sensación térmica: {{dataWeather?.current?.feelslike_c}} °C <strong>({{dataWeather?.current?.feelslike_f}} °F) </strong></p>
+            <img src={{dataWeather?.current?.condition.icon}} alt="">
+            <p>Estado del cielo: {{dataWeather?.current?.condition.text}} </p>
+            <p>Humedad: {{dataWeather?.current?.humidity}}% </p>
+            <p>Índice UV {{dataWeather?.current?.uv}} </p>
+            <p>Visibilidad {{dataWeather?.current?.vis_km}} km<strong>( {{dataWeather?.current?.vis_miles}}millas )  </strong>  </p>
+      </header>
+    </section>
+    </div>
+  </div>
+
+<div class="columns is-mobile is-centered">
+  <div class="column is-half animate__animated animate__rubberBand">
+   <strong>
+    <section>
+      <header>
+        <h1 class="is-size-4">Presión y Precipitación</h1>
+          <p>Presión atmosférica {{dataWeather?.current?.pressure_mb}} mb <strong>( {{dataWeather?.current?.pressure_in}} in )</strong> </p>
+          <p>Precipitación {{dataWeather?.current?.precip_mm}} mm <strong>({{dataWeather?.current?.precip_mm}} in)</strong> </p>
+      </header>
+    </section>
+   </strong>
+  </div>
+  <div class="column is-half animate__animated animate__rubberBand">
+    <strong>
+      <section>
+        <header>
+          <h1 class="is-size-4">Tiempo y Ubicaciónn</h1>
+            <p>Última actualización {{dataWeather?.current?.last_updated}} </p>
+            <p>Hora local {{dataWeather?.location?.localtime}}</p>
+            <p>Ubicación {{dataWeather?.location?.name}}, {{dataWeather?.location?.region}}, {{dataWeather?.location?.country}}  </p>
+            <p>Latitud ({{dataWeather?.location?.lat}})</p>
+            <p>Longitud ({{dataWeather?.location?.lon}})</p>
+            <p>Zona horaria {{dataWeather?.location?.tz_id}}</p>
+        </header>
+      </section>
+    </strong>
+  </div>
+  <div class="column is-half animate__animated animate__rubberBand">
+ <p>
+  <strong>
+    <section>
+      <header>
+        <h1 class="is-size-4">Viento</h1>
+          <p>Dirección del viento {{dataWeather?.current?.wind_dir}} </p>
+          <p>Grados del viento {{dataWeather?.current?.wind_degree}} °</p>
+          <p>Velocidad del viento {{dataWeather?.current?.wind_kph}} km/h <strong>( {{dataWeather?.current?.wind_kph}} mph) </strong></p>
+          <p></p>
+      </header>
+    </section>
+  </strong>
+ </p>
+  </div>
+</div>
+
+</div>
+</ng-container>

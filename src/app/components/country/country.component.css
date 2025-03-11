@@ -1,0 +1,55 @@
+.container {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  place-content: center;
+  text-align: center;
+}
+.cards {
+  max-width: 30rem;
+  background: rgba( 255, 255, 255, 0 );
+  backdrop-filter: blur( 20px );
+  -webkit-backdrop-filter: blur( 20px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+text-align: center;
+padding: 2rem;
+}
+.button {
+  margin-bottom: 1rem;
+}
+
+img {
+  width: 8rem;
+}
+.columns {
+  gap: 1rem;
+  margin-bottom: 1rem;
+  margin: 1rem;
+}
+.column {
+  border: 2px solid white;
+  transition: background-color 0.3s ease-in-out;
+  transition: opacity 0.3s ease;
+  opacity: 5;
+}
+.column:hover {
+  border-radius: 2%;
+background-color: #1b263b;
+border-radius: 3%;
+}
+.column:hover .card:not(:hover){
+opacity: 0.5;
+}
+input{
+  text-align: center;
+  color: white;
+}
+button{
+  margin-top: 1rem;;
+}
+button:hover{
+  background-color: white;
+}
+
+
